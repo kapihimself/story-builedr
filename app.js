@@ -1,10 +1,6 @@
 // StoryWeaver AI Application JavaScript with REAL AI Integration
 
 // API Configuration
-const OPENAI_API_KEY = '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';
-const GEMINI_API_KEY = 'AIzaSyBBert3S6vO-t4_AqVkMkxC5gzk9FPa2hE';
-const OPENAI_BASE_URL = 'https://api.openai.com/v1';
-const GEMINI_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 
 // Application Data
 const appData = {

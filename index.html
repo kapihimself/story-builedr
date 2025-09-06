@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryWeaver AI - Create Consistent Comic Series</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Step 1: Landing/Onboarding Screen -->
+    <div id="landing-screen" class="screen active">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="logo">
+                    <h1>StoryWeaver AI</h1>
+                    <div class="logo-subtitle">Next-Gen Comic Creation with Real AI</div>
+                </div>
+                
+                <div class="hero-text">
+                    <h2>Create Consistent Comic Series with AI-Powered Magic</h2>
+                    <p>Transform your story ideas into professional comics using real OpenAI GPT-4 and DALL-E 3. Experience actual AI character generation, world building, and cross-media export capabilities.</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Real AI Character Genesis</h3>
+                        <p>GPT-4 generates unique characters with detailed personalities. DALL-E 3 creates their visual portraits.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>AI World Building</h3>
+                        <p>Create immersive universes with AI-generated rules, societies, and atmospheric details.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>DALL-E 3 Panel Art</h3>
+                        <p>Every comic panel is uniquely generated with consistent character visuals and stunning artwork.</p>
+                    </div>
+                </div>
+                
+                <button class="btn btn--primary btn--hero" onclick="handleStartClick()">
+                    Start Creating Your AI Story
+                    <span class="btn-glow"></span>
+                </button>
+                
+                <div class="ai-badges">
+                    <span class="ai-badge">✨ Powered by GPT-4</span>
+                    <span class="ai-badge">🎨 DALL-E 3 Integration</span>
+                    <span class="ai-badge">🤖 Gemini Fallback</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 2: Story Seed Input -->
+    <div id="story-seed-screen" class="screen">
+        <div class="container">
+            <div class="step-header">
+                <div class="step-indicator">
+                    <span class="step-number active">1</span>
+                    <span class="step-number">2</span>
+                    <span class="step-number">3</span>
+                    <span class="step-number">4</span>
+                    <span class="step-number">5</span>
+                    <span class="step-number">6</span>
+                </div>
+                <h2>Plant Your Story Seed</h2>
+                <p>Tell us your story premise and we'll use real AI to build an entire universe</p>
+            </div>
+
+            <div class="story-input-section">
+                <div class="form-group">
+                    <label class="form-label">What's your story about?</label>
+                    <textarea 
+                        id="story-premise" 
+                        class="form-control story-textarea" 
+                        placeholder="A cyberpunk detective in Neo-Tokyo discovers a conspiracy that threatens to reshape reality itself..."
+                        rows="4"
+                    ></textarea>
+                    <div class="input-hint">GPT-4 will analyze your premise and create unique characters</div>
+                </div>
+
+                <div class="inspiration-section">
+                    <h4>Need inspiration? Try these:</h4>
+                    <div class="inspiration-chips" id="inspiration-chips">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="preferences-grid">
+                    <div class="preference-group">
+                        <label class="form-label">Genre</label>
+                        <div class="chip-selector" id="genre-selector">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="preference-group">
+                        <label class="form-label">Tone</label>
+                        <div class="chip-selector" id="tone-selector">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn--primary btn--lg btn--full-width" onclick="handleGenerateUniverse()">
+                    🧠 Generate Universe with AI
+                    <div class="loading-spinner hidden" id="universe-spinner"></div>
+                </button>
+                
+                <div class="ai-info">
+                    <small>🤖 This will use OpenAI GPT-4 to generate your characters and world. Processing time: 10-30 seconds.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 3: Character Genesis -->
+    <div id="character-screen" class="screen">
+        <div class="container">
+            <div class="step-header">
+                <div class="step-indicator">
+                    <span class="step-number completed">1</span>
+                    <span class="step-number active">2</span>
+                    <span class="step-number">3</span>
+                    <span class="step-number">4</span>
+                    <span class="step-number">5</span>
+                    <span class="step-number">6</span>
+                </div>
+                <h2>Meet Your AI-Generated Characters</h2>
+                <p>GPT-4 has created unique characters with detailed personalities. DALL-E 3 is generating their portraits.</p>
+            </div>
+
+            <div class="characters-section">
+                <div class="characters-grid" id="characters-grid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                
+                <div class="relationship-web">
+                    <h3>AI-Generated Character Relationships</h3>
+                    <div class="relationship-diagram" id="relationship-diagram">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn--outline" onclick="generateCharacters()">🔄 Regenerate All Characters</button>
+                    <button class="btn btn--primary btn--lg" onclick="handleProceedWorld()">Proceed to World Building</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 4: World Building -->
+    <div id="world-screen" class="screen">
+        <div class="container">
+            <div class="step-header">
+                <div class="step-indicator">
+                    <span class="step-number completed">1</span>
+                    <span class="step-number completed">2</span>
+                    <span class="step-number active">3</span>
+                    <span class="step-number">4</span>
+                    <span class="step-number">5</span>
+                    <span class="step-number">6</span>
+                </div>
+                <h2>Shape Your AI World</h2>
+                <p>Define the visual style for your AI-generated story universe</p>
+            </div>
+
+            <div class="world-building-section">
+                <div class="world-overview" id="world-overview">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <div class="visual-options-grid">
+                    <div class="option-group">
+                        <h3>Visual Style for DALL-E 3</h3>
+                        <div class="style-selector" id="visual-style-selector">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <h3>Color Palette</h3>
+                        <div class="palette-selector" id="color-palette-selector">
+                            <div class="palette-option active" data-palette="vibrant">
+                                <div class="palette-colors">
+                                    <span style="background: #00d4ff;"></span>
+                                    <span style="background: #8b5cf6;"></span>
+                                    <span style="background: #f59e0b;"></span>
+                                    <span style="background: #ef4444;"></span>
+                                </div>
+                                <span>Vibrant</span>
+                            </div>
+                            <div class="palette-option" data-palette="monochrome">
+                                <div class="palette-colors">
+                                    <span style="background: #ffffff;"></span>
+                                    <span style="background: #9ca3af;"></span>
+                                    <span style="background: #374151;"></span>
+                                    <span style="background: #111827;"></span>
+                                </div>
+                                <span>Monochrome</span>
+                            </div>
+                            <div class="palette-option" data-palette="warm">
+                                <div class="palette-colors">
+                                    <span style="background: #fbbf24;"></span>
+                                    <span style="background: #f59e0b;"></span>
+                                    <span style="background: #dc2626;"></span>
+                                    <span style="background: #7c2d12;"></span>
+                                </div>
+                                <span>Warm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn--primary btn--lg btn--full-width" onclick="handleCreateEpisode()">
+                    Create First Episode
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 5: Episode Generation -->
+    <div id="episode-screen" class="screen">
+        <div class="container">
+            <div class="step-header">
+                <div class="step-indicator">
+                    <span class="step-number completed">1</span>
+                    <span class="step-number completed">2</span>
+                    <span class="step-number completed">3</span>
+                    <span class="step-number active">4</span>
+                    <span class="step-number">5</span>
+                    <span class="step-number">6</span>
+                </div>
+                <h2>Generate Your AI Episode</h2>
+                <p>Tell us what happens and watch GPT-4 create the script while DALL-E 3 generates the artwork</p>
+            </div>
+
+            <div class="episode-input-section">
+                <div class="form-group">
+                    <label class="form-label">What happens in this episode?</label>
+                    <textarea 
+                        id="episode-input" 
+                        class="form-control" 
+                        placeholder="The main character discovers a hidden message that leads them into danger..."
+                        rows="3"
+                    ></textarea>
+                    <div class="input-hint">GPT-4 will create the comic script and DALL-E 3 will generate panel artwork</div>
+                </div>
+
+                <button class="btn btn--primary btn--lg" onclick="handleGenerateEpisode()">
+                    🎨 Generate Comic with AI
+                    <div class="loading-spinner hidden" id="episode-spinner"></div>
+                </button>
+                
+                <div class="ai-info">
+                    <small>⚡ This process uses multiple AI models and may take 30-60 seconds to complete.</small>
+                </div>
+            </div>
+
+            <div class="generation-progress hidden" id="generation-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">AI is analyzing story structure...</div>
+            </div>
+
+            <div class="comic-panels-section hidden" id="comic-panels-section">
+                <div class="panels-header">
+                    <h3>Episode 1: AI-Generated Comic</h3>
+                    <div class="panel-controls">
+                        <button class="btn btn--outline btn--sm" onclick="navigatePanel(-1)">← Previous</button>
+                        <span class="panel-counter" id="panel-counter">Panel 1 of 4</span>
+                        <button class="btn btn--outline btn--sm" onclick="navigatePanel(1)">Next →</button>
+                    </div>
+                </div>
+
+                <div class="comic-viewer">
+                    <div class="comic-panel-container" id="comic-panel-container">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="episode-actions">
+                    <button class="btn btn--outline" onclick="handleEditEpisode()">✏️ Edit with AI</button>
+                    <button class="btn btn--primary" onclick="handleProceedExport()">Proceed to Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 6: Interactive Editing -->
+    <div id="editing-screen" class="screen">
+        <div class="container">
+            <div class="step-header">
+                <div class="step-indicator">
+                    <span class="step-number completed">1</span>
+                    <span class="step-number completed">2</span>
+                    <span class="step-number completed">3</span>
+                    <span class="step-number completed">4</span>
+                    <span class="step-number active">5</span>
+                    <span class="step-number">6</span>
+                </div>
+                <h2>Refine Your Story with AI</h2>
+                <p>Use natural language commands to edit panels with GPT-4 and regenerate images with DALL-E 3</p>
+            </div>
+
+            <div class="editing-interface">
+                <div class="editing-panels">
+                    <div class="panel-editor" id="panel-editor">
+                        <div class="editable-panel">
+                            <div class="panel-number">1</div>
+                            <div class="panel-description">Panel 1: Opening scene</div>
+                            <div class="panel-dialogue">Sample dialogue...</div>
+                        </div>
+                        <div class="editable-panel">
+                            <div class="panel-number">2</div>
+                            <div class="panel-description">Panel 2: Character interaction</div>
+                            <div class="panel-dialogue">More dialogue...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="editing-controls">
+                    <div class="form-group">
+                        <label class="form-label">Natural Language AI Editing</label>
+                        <textarea 
+                            id="edit-command" 
+                            class="form-control" 
+                            placeholder="Make the character look more suspicious, add more tension to the dialogue, or change the scene to nighttime..."
+                            rows="2"
+                        ></textarea>
+                        <button class="btn btn--primary btn--sm">🤖 Apply AI Changes</button>
+                    </div>
+
+                    <div class="quick-edits">
+                        <h4>Quick AI Edits</h4>
+                        <div class="quick-edit-buttons">
+                            <button class="btn btn--outline btn--sm">Change Expression</button>
+                            <button class="btn btn--outline btn--sm">Edit Dialogue</button>
+                            <button class="btn btn--outline btn--sm">Adjust Composition</button>
+                        </div>
+                    </div>
+
+                    <div class="ai-edit-info">
+                        <small>💡 AI will understand your natural language commands and regenerate content accordingly. Images will be recreated if visual changes are requested.</small>
+                    </div>
+
+                    <div class="editing-actions">
+                        <button class="btn btn--outline" onclick="handleBackToEpisode()">← Back to Episode</button>
+                        <button class="btn btn--primary" onclick="handleFinishEditing()">Proceed to Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 7: Cross-Media Export -->
+    <div id="export-screen" class="screen">
+        <div class="container">
+            <div class="step-header">
+                <div class="step-indicator">
+                    <span class="step-number completed">1</span>
+                    <span class="step-number completed">2</span>
+                    <span class="step-number completed">3</span>
+                    <span class="step-number completed">4</span>
+                    <span class="step-number completed">5</span>
+                    <span class="step-number active">6</span>
+                </div>
+                <h2>Export Your AI Creation</h2>
+                <p>Download your AI-generated story in multiple formats</p>
+            </div>
+
+            <div class="export-options">
+                <div class="export-formats" id="export-formats">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+
+                <div class="export-preview" id="export-preview">
+                    <h3>Preview</h3>
+                    <div class="preview-container" id="preview-container">
+                        Select a format to see preview
+                    </div>
+                </div>
+
+                <div class="export-actions">
+                    <button class="btn btn--outline" onclick="handleNewEpisode()">Create New Episode</button>
+                    <button class="btn btn--outline" onclick="handleNewStory()">Start New Story</button>
+                    <button class="btn btn--primary btn--lg" id="download-btn" onclick="handleDownload()" disabled>📥 Download AI Story</button>
+                </div>
+            </div>
+
+            <div class="success-message hidden" id="success-message">
+                <div class="success-icon">✨</div>
+                <h3>AI Story Created Successfully!</h3>
+                <p>Your comic has been generated with real AI and is ready to share with the world.</p>
+                <div class="success-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="panels-generated">4</span>
+                        <span class="stat-label">AI Panels</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="characters-created">3</span>
+                        <span class="stat-label">Characters</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="images-generated">7</span>
+                        <span class="stat-label">AI Images</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loading-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="loading-animation">
+                <div class="loading-brain">🧠</div>
+                <div class="loading-text" id="loading-text">AI is processing your request...</div>
+                <div class="loading-progress">
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
